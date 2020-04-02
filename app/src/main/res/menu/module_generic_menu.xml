@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/menu_showPdf"
+        android:icon="@drawable/module_ic_stars_black_24dp"
+        android:iconTint="@android:color/black"
+        android:title=""
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_call"
+        android:icon="@drawable/module_ic_stars_black_24dp"
+        android:title=""
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu"
+        android:title="Menu"
+        android:icon="@drawable/module_ic_stars_black_24dp"
+        app:showAsAction="ifRoom">
+
+        <menu>
+
+            <item
+                android:id="@+id/option1"
+                android:icon="@drawable/module_ic_stars_black_24dp"
+                android:iconTint="@android:color/black"
+                android:title="Option1"
+                android:visible="true" />
+
+            <item
+                android:id="@+id/option2"
+                android:icon="@drawable/module_ic_stars_black_24dp"
+                android:iconTint="@android:color/black"
+                android:title="Option2"
+                android:visible="true" />
+            <item
+                android:id="@+id/option3"
+                android:icon="@drawable/module_ic_stars_black_24dp"
+                android:iconTint="@android:color/black"
+                android:title="Option3"
+                android:visible="true" />
+
+        </menu>
+
+    </item>
+</menu>

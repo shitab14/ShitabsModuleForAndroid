@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ShitabsModuleForAndroid</string>
+    <string name="module_iv_desc_back_button">Back Button</string>
+    <string name="module_tv_dummy_text">...</string>
 </resources>
