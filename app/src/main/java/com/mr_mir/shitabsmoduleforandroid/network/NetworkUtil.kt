@@ -12,6 +12,7 @@ class NetworkUtil {
 
     companion object {
 
+        //INTERNET
         fun isNetworkConnected(context: Context): Boolean {
             //ADD ACCESS_NETWORK_STATE to the project Manifest
 

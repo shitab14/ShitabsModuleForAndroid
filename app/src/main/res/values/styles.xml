@@ -14,4 +14,12 @@
         <item name="colorAccent">@android:color/holo_blue_bright</item>
     </style>
 
+    //Menu
+    <style name="OverflowMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:windowDisablePreview">true</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">5.0dp</item>
+        <!--<item name="android:popupBackground">#FFF</item>-->
+    </style>
+
 </resources>

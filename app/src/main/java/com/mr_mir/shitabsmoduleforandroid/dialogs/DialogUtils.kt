@@ -1,13 +1,47 @@
 package com.mr_mir.shitabsmoduleforandroid.dialogs
 
+import android.Manifest
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.app.ProgressDialog
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
+import android.content.pm.PackageManager
+import android.content.pm.PackageManager.NameNotFoundException
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Matrix
 import android.graphics.drawable.ColorDrawable
+import android.media.ExifInterface
+import android.net.Uri
+import android.os.Build
+import android.provider.MediaStore
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.TextUtils
+import android.text.format.DateUtils
+import android.text.style.ForegroundColorSpan
+import android.util.DisplayMetrics
+import android.util.Log
+import android.util.Patterns
 import android.view.View
-import android.widget.DatePicker
+import android.view.WindowManager
+import android.widget.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
+import com.mr_mir.shitabsmoduleforandroid.R
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.text.DateFormat
+import java.text.DateFormatSymbols
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 /**
  * Created by Shitab Mir
@@ -17,15 +51,40 @@ class DialogUtils {
 
     companion object {
 
-        // Simple Dialog with No buttons
-        fun showSimpleDialog(context: Context?, dialogLayout: Int?, cancelable: Boolean?, cancelableTouchOuside: Boolean? ) {
-            val myDialog: Dialog = Dialog(context!!)
-            myDialog.setContentView(dialogLayout!!)
-            myDialog.setCancelable(cancelable!!)
-            myDialog.setCanceledOnTouchOutside(cancelableTouchOuside!!)
-
-            myDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        /*fun showNoInternetDialog(context: Context) {
+            val myDialog = Dialog(context)
+            val noInternetLayout: Int = R.layout.no_internet_connection_popup
+            myDialog.setContentView(noInternetLayout)
+            myDialog.setCancelable(false)
+            myDialog.setCanceledOnTouchOutside(false)
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             myDialog.show()
+            val tvTryInternetConnectionAgain =
+                myDialog.findViewById<TextView>(R.id.noInternetConnection)
+            tvTryInternetConnectionAgain.setOnClickListener {
+                try {
+                    myDialog.dismiss()
+                    (context as Activity).finish()
+                } catch (e: Exception) {
+                    Log.e("ERROR: ", " $e")
+                }
+            }
+        }*/
+
+        // Simple Dialog with No buttons
+        fun showSimpleDialog(context: Context?, dialogLayout: Int?, cancelable: Boolean?, cancelableTouchOuside: Boolean?, cancelViewId:Int? ) {
+            try {
+                val myDialog: Dialog = Dialog(context!!)
+                myDialog.setContentView(dialogLayout!!)
+                myDialog.setCancelable(cancelable!!)
+                myDialog.setCanceledOnTouchOutside(cancelableTouchOuside!!)
+                myDialog.findViewById<View>(cancelViewId!!)
+
+                myDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                myDialog.show()
+            } catch (e: java.lang.Exception) {
+                Log.e("DialogUtil Error", ": Unable to show simple dialog")
+            }
         }
 
         fun openDatePicker(clickView: View, context: Context){
@@ -50,6 +109,24 @@ class DialogUtils {
             })
 
         }
+
+        fun showSnackbar(context: Context?, view: View, msg: String) {
+            val bar: Snackbar = Snackbar.make(view, msg, Snackbar.LENGTH_LONG)
+                .setAction("Cancel", View.OnClickListener { })
+                .setActionTextColor(Color.WHITE)
+            bar.show()
+        }
+
+        fun showLoadingDialog(context: Context?): ProgressDialog? {
+            val progressDialog = ProgressDialog(context)
+            progressDialog.setMessage("Loading...")
+            progressDialog.isIndeterminate = true
+            progressDialog.setCancelable(false)
+            progressDialog.setCanceledOnTouchOutside(false)
+            return progressDialog
+        }
+
+
 
     }
 }

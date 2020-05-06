@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -73,15 +73,30 @@
             android:gravity="center"
             android:padding="@dimen/_15sdp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
+        <HorizontalScrollView
+            android:id="@+id/hsv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/etTest01"
-            android:orientation="horizontal"
-            android:scrollbarAlwaysDrawHorizontalTrack="true"
-            android:scrollbars="horizontal"
-            tools:listitem="@layout/module_rv_button"
-            />
+            android:layout_centerInParent="true">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_100sdp"
+                android:orientation="horizontal"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:scrollbars="horizontal"
+                tools:listitem="@layout/module_rv_button"
+                />
+        </HorizontalScrollView>
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_below="@id/hsv"
+            tools:ignore="WebViewLayout" />
 
     </RelativeLayout>
 
