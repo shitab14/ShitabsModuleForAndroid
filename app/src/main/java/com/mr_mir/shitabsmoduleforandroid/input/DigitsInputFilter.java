@@ -93,7 +93,11 @@ public class DigitsInputFilter implements InputFilter {
 
     private String deleteCharAtIndex(Spanned dest, int dstart) {
         StringBuilder builder = new StringBuilder(dest);
-        builder.deleteCharAt(dstart);
+        try {
+            builder.deleteCharAt(dstart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return builder.toString();
     }
 }
