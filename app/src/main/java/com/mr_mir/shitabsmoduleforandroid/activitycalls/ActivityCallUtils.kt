@@ -106,5 +106,14 @@ class ActivityCallUtils {
             intent.putExtras(bundle)
             context.startActivity(intent)
         }
+
+        //Share
+        fun shareTextUrl(text: String, context: Context) {
+            val share = Intent(Intent.ACTION_SEND)
+            share.type = "text/plain"
+            share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
+            share.putExtra(Intent.EXTRA_TEXT, text)
+            context.startActivity(Intent.createChooser(share, "Share $text"))
+        }
     }
 }
