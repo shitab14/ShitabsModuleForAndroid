@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.text.InputFilter
+import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -12,11 +13,13 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mr_mir.shitabsmoduleforandroid.R
 import com.mr_mir.shitabsmoduleforandroid.adapters.ActionsAdapter
 import com.mr_mir.shitabsmoduleforandroid.input.DigitsInputFilter
 import com.mr_mir.shitabsmoduleforandroid.network.NetworkUtil
+import com.mr_mir.shitabsmoduleforandroid.security.SecurityUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -32,8 +35,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: ActionsAdapter
 
     //android:foreground="?attr/selectableItemBackground"
+    /*val outValue = TypedValue()
+    context.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        buttonView.foreground = resources.getDrawable(outValue.resourceId)
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        SecurityUtil.disableScreenshot(context)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -62,7 +72,18 @@ class MainActivity : AppCompatActivity() {
         rv?.layoutManager = mLayoutManager
         rv?.adapter = adapter
 
+
     }
+
+    // RECYCLEVIEW SETUP
+    /*private fun setRecyclerView(contacts: java.util.ArrayList<ContactModel>, searchText: String) {
+        //Collections.reverse(contacts)
+        adapter = ContactListAdapter(this@ReferFromPhonebookActivity, contacts)
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rvContacts.itemAnimator = DefaultItemAnimator()
+        rvContacts.layoutManager = layoutManager
+        rvContacts.adapter = adapter
+    }*/
 
 
     //WEBVIEW DEMONSTRATION -----------------------------------------------------------------------

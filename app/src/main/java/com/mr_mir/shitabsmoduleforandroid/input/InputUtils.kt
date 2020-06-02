@@ -4,13 +4,11 @@ import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import java.text.NumberFormat
 import java.util.*
-import java.util.logging.Handler
 
 /**
  * Created by Shitab Mir on 30,March,2020
@@ -79,6 +77,22 @@ class InputUtils {
             val clip = ClipData.newPlainText(textLabel, text)
             clipboard.setPrimaryClip(clip)
             Toast.makeText(context, toast, Toast.LENGTH_SHORT).show()
+        }
+
+        fun currencyFormatterWithPoint(balance: String?): String? {
+            return if (balance != null && !balance.trim { it <= ' ' }
+                    .isEmpty() && balance.toDouble() != 0.0
+            ) {
+                val amount = balance.toDouble()
+                val numberFormat =
+                    NumberFormat.getCurrencyInstance(getEnglishUSLocale())
+                var localeValue = numberFormat.format(amount)
+                localeValue = localeValue.replace("-", "")
+
+                localeValue
+            } else {
+                "০.০০"
+            }
         }
     }
 
