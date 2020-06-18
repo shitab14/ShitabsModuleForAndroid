@@ -7,6 +7,9 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
 import java.text.NumberFormat
 import java.util.*
 
@@ -94,6 +97,18 @@ class InputUtils {
                 "০.০০"
             }
         }
+
+        fun encodeToJSONString(obj: Any): String? {
+            val gson = Gson()
+            return gson.toJson(obj)
+        }
+
+        fun decodeFromJSONString(s: String?): Any {
+            val gson = Gson()
+            val type: Type = object : TypeToken<Any?>() {}.type
+            return gson.fromJson(s, type)
+        }
+
     }
 
 }

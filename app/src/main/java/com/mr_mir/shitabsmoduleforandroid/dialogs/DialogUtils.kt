@@ -126,7 +126,27 @@ class DialogUtils {
             return progressDialog
         }
 
+// Types of Dialogs
+        /*
+        val filterDialogFragment = SuggestionDialogFragment()
+        //filterDialogFragment.show(activity!!.supportFragmentManager, "suggestion_dialog")
 
+        /*val builder = AlertDialog.Builder(activity as Context)
+        val inflater = LayoutInflater.from(activity as Context)
+        val dialogView = inflater.inflate(R.layout.fragment_bottomsheet_suggestion_dialog, null)
+        builder.setView(dialogView)
+        builder.setCancelable(false)
+        val dialog = builder.create()
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.show()*/
+
+        val dialog= BottomSheetDialog(activity as Context);
+        dialog.setContentView(R.layout.fragment_bottomsheet_suggestion_dialog)
+
+        dialog.setCanceledOnTouchOutside(false)
+        //dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+        dialog.show()
+         */
 
     }
 }
