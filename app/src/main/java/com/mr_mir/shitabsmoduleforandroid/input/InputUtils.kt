@@ -4,11 +4,13 @@ import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.Bitmap
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.*
 import java.lang.reflect.Type
 import java.text.NumberFormat
 import java.util.*
@@ -107,6 +109,33 @@ class InputUtils {
             val gson = Gson()
             val type: Type = object : TypeToken<Any?>() {}.type
             return gson.fromJson(s, type)
+        }
+
+        private fun convertBitmapToFile(fileName: String, bitmap: Bitmap, context: Context): File {
+            //create a file to write bitmap data
+            val file = File(context.cacheDir, fileName)
+            file.createNewFile()
+
+            //Convert bitmap to byte array
+            val bos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /*ignored for PNG*/, bos)
+            val bitMapData = bos.toByteArray()
+
+            //write the bytes in file
+            var fos: FileOutputStream? = null
+            try {
+                fos = FileOutputStream(file)
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+            }
+            try {
+                fos?.write(bitMapData)
+                fos?.flush()
+                fos?.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            return file
         }
 
     }
