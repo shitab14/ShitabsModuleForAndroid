@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -136,6 +137,16 @@ class InputUtils {
                 e.printStackTrace()
             }
             return file
+        }
+
+        //Check if an application installed
+        private fun isThisAppInstalled(packageName: String, packageManager: PackageManager): Boolean {
+            return try {
+                packageManager.getPackageInfo(packageName, 0)
+                true
+            } catch (e: PackageManager.NameNotFoundException) {
+                false
+            }
         }
 
     }
