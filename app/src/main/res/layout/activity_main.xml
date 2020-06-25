@@ -98,6 +98,15 @@
             android:layout_below="@id/hsv"
             tools:ignore="WebViewLayout" />
 
+        <Button
+            android:id="@+id/bGoingToAnActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="Going to an Activity" />
+
     </RelativeLayout>
 
 </RelativeLayout>

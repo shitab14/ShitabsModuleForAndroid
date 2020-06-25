@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.text.InputFilter
-import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,13 +12,15 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mr_mir.shitabsmoduleforandroid.R
+import com.mr_mir.shitabsmoduleforandroid.activitycalls.ActivityCallUtils
 import com.mr_mir.shitabsmoduleforandroid.adapters.ActionsAdapter
 import com.mr_mir.shitabsmoduleforandroid.input.DigitsInputFilter
+import com.mr_mir.shitabsmoduleforandroid.moduleinterfacing.Navigator
 import com.mr_mir.shitabsmoduleforandroid.network.NetworkUtil
 import com.mr_mir.shitabsmoduleforandroid.security.SecurityUtil
+import com.mr_mir.uiuxdesign.activity.MainUIActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -50,9 +51,40 @@ class MainActivity : AppCompatActivity() {
         initActionBar()
         setupData()
         setupView()
+
+        setupListeners()
         //showWebView()
         //(context as Activity).overridePendingTransition(R.anim.right_in, R.anim.left_out) // animation
     }
+
+    private fun setupListeners() {
+        bGoingToAnActivity.setOnClickListener {
+            /*val launchIntent =
+                packageManager.getLaunchIntentForPackage("com.mr_mir.uiuxdesign.activity.MainUIActivity")
+            startActivity(launchIntent)
+//            ActivityCallUtils.goToNextActivity(this, Class.forName("com.mr_mir.uiuxdesign.activity.MainUIActivity"))*/
+
+            /*val intent = Intent(Intent.ACTION_VIEW).setClassName("com.mr_mir.uiuxdesign", "com.mr_mir.uiuxdesign.activity.MainUIActivity")
+            startActivity(intent)*/
+
+            //Navigator.goToUXModule(this)
+ActivityCallUtils.goToNextActivity(context, MainUIActivity::class.java)
+        }
+    }
+
+
+/*
+    fun goToPosLandingPage() {
+            val inter: PosModuleInterface = PosModuleIntImp()
+            setPosInventoryData(this, AppDataManager(this), inter)
+            CommonUtil.goToNextActivity(this, PosLandingActivity::class.java)
+            val intent = Intent(this@SplashActivity, PosLandingActivity::class.java)
+            intent.flags =
+                Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+
+    }
+*/
 
     private fun setupData() {
         list.add("Item 01")

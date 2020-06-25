@@ -1,2 +1,4 @@
+//include ':uiuxdesign'
 rootProject.name='ShitabsModuleForAndroid'
 include ':app'
+include ':app', ':uiuxdesign'

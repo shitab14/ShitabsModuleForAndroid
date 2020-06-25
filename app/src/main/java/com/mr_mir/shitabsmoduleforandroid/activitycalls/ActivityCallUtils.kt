@@ -15,7 +15,7 @@ class ActivityCallUtils {
 
         fun goToNextActivity(
             context: Context,
-            targetActivity: Class<out Activity?>?
+            targetActivity: Class<*>
         ) {
             val intent = Intent(context, targetActivity)
             context.startActivity(intent)
