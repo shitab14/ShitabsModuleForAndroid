@@ -1,10 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainUIActivity"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@android:color/secondary_text_light_nodisable"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="#F8F8F8">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvCamera"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginRight="30dp"
+                        android:elevation="5dp"
+                        app:cardElevation="5dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardBackgroundColor="@android:color/white"
+                        android:background="@android:color/white"
+                        android:layout_centerVertical="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        tools:ignore="UnusedAttribute">
+
+                        <ImageView
+                            android:id="@+id/ivCam"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:padding="3dp"
+                            app:srcCompat="@android:drawable/ic_menu_camera"
+                            tools:ignore="RtlSymmetry" />
+                    </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/ivToolbarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_instagramlogo" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_margin="5dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvInstaTv"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="6dp"
+                            android:elevation="5dp"
+                            app:cardElevation="5dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            android:background="@android:color/white"
+                            android:foreground="?attr/selectableItemBackground"                        >
+
+                            <ImageView
+                                android:id="@+id/ivInstaTV"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:background="@android:color/white"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:paddingTop="4dp"
+                                android:tint="@android:color/darker_gray"
+                                app:srcCompat="@drawable/ic_insta_tv"
+                                tools:ignore="RtlSymmetry,VectorDrawableCompat" />
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvDM"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="6dp"
+                            android:elevation="5dp"
+                            app:cardElevation="5dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            android:background="@android:color/white"
+                            android:foreground="?attr/selectableItemBackground"  >
+                            <ImageView
+                                android:id="@+id/ivDM"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="4dp"
+                                android:background="@android:color/white"
+                                android:tint="@android:color/darker_gray"
+                                android:foreground="?attr/selectableItemBackground"
+                                app:srcCompat="@drawable/ic_insta_dm"
+                                tools:ignore="RtlSymmetry,VectorDrawableCompat" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvStorySection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@android:color/white"
+        android:background="@android:color/white"
+        android:layout_below="@id/appbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:background="#F4F4F4">
+            <TextView
+                android:id="@+id/tvStories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stories"
+                android:layout_marginBottom="6dp"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/tvStories"
+                android:gravity="center_vertical"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/white"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    android:elevation="5dp"
+                    android:layout_gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="7dp"
+                        android:layout_gravity="center"
+                        android:tint="@android:color/darker_gray"
+                        android:src="@drawable/ic_insta_add"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvStories"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/items_stories"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView><!--
+<include
+    android:layout_below="@+id/cvStorySection"
+    layout="@layout/items_posts"
+    android:layout_height="match_parent"
+    android:layout_width="wrap_content"/>-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cvStorySection">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPosts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/cvStorySection"
+            tools:listitem="@layout/items_posts"/>
+
+    </androidx.core.widget.NestedScrollView>
+<!--<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@android:color/darker_gray"
+    android:layout_above="@+id/llBottomSection"/>-->
+    <LinearLayout
+        android:id="@+id/llBottomSection"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_gradient_grey"
+        android:gravity="bottom">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="15dp"
+            app:cardElevation="6dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:background="@android:color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp">
+                <ImageView
+                    android:id="@+id/ivHome"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    android:paddingTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_insta_home"
+                    android:tint="@android:color/darker_gray"
+                    android:foreground="?attr/selectableItemBackground"/>
+
+                <ImageView
+                    android:id="@+id/ivSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    android:paddingTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_insta_search"
+                    android:tint="@android:color/darker_gray"
+                    android:foreground="?attr/selectableItemBackground"/>
+
+                <ImageView
+                    android:id="@+id/ivNewPost"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    android:paddingTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_insta_add"
+                    android:tint="@android:color/darker_gray"
+                    android:foreground="?attr/selectableItemBackground"/>
+
+                <ImageView
+                    android:id="@+id/ivLiked"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    android:paddingTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_insta_like"
+                    android:tint="@android:color/darker_gray"
+                    android:foreground="?attr/selectableItemBackground"/>
+
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    android:paddingTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_insta_profile"
+                    android:tint="@android:color/darker_gray"
+                    android:foreground="?attr/selectableItemBackground"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</RelativeLayout>
