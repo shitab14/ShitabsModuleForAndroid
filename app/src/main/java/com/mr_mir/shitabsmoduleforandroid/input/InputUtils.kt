@@ -6,6 +6,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.os.Build
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -13,6 +14,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.*
 import java.lang.reflect.Type
+import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
@@ -84,6 +86,80 @@ class InputUtils {
             clipboard.setPrimaryClip(clip)
             Toast.makeText(context, toast, Toast.LENGTH_SHORT).show()
         }
+
+
+        fun currencyFormatterWithPointInBangla(balance: String?): String? {
+            return if (balance != null && !balance.trim { it <= ' ' }
+                    .isEmpty() && balance.toDouble() != 0.0
+            ) {
+                val amount = balance.toDouble()
+                val numberFormat =
+                    NumberFormat.getCurrencyInstance(getBangleLocale())
+                var localeValue = numberFormat.format(amount)
+                localeValue = localeValue.replace("-", "")
+                //localeValue = localeValue.replace(AppConstant.TAKA_SIGN, "")
+                localeValue
+            } else {
+                "০.০০"
+            }
+        }
+
+
+        fun getBangleLocale(): Locale? {
+            return Locale("bn", "BD")
+        }
+
+        fun currencyFormatterBangla(balance: String?): String? {
+            return if (balance != null && !balance.trim { it <= ' ' }
+                    .isEmpty() && balance.toDouble() != 0.0
+            ) {
+                val amount = balance.toDouble()
+                val numberFormat =
+                    NumberFormat.getCurrencyInstance(getBangleLocale())
+                var localeValue = numberFormat.format(amount)
+                localeValue = localeValue.replace("-", "")
+                //localeValue = localeValue.replace(AppConstant.TAKA_SIGN, "")
+                localeValue = localeValue.replace(".০০", "")
+                localeValue = localeValue.replace(".00", "")
+                localeValue
+            } else {
+                "০"
+            }
+        }
+
+        fun currencyFormatterWithoutPoint(balance: String): String? {
+            return try {
+                val amount = balance.toDouble()
+                val decimalFormat = DecimalFormat("##,##,##,###")
+                var locationSpecificDF: DecimalFormat? = null
+                locationSpecificDF = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    DecimalFormat.getNumberInstance(Locale.forLanguageTag("bn")) as DecimalFormat
+                } else {
+                    return decimalFormat.format(amount)
+                }
+                locationSpecificDF.format(amount)
+            } catch (e: Exception) {
+                balance
+            }
+        }
+
+        fun currencyFormatterEN(balance: String): String? {
+            return try {
+                val amount = balance.toDouble()
+                val decimalFormat =
+                    DecimalFormat("##,##,##,###.##")
+                var locationSpecificDF: DecimalFormat? = null
+                locationSpecificDF = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    DecimalFormat.getNumberInstance(Locale.forLanguageTag("en")) as DecimalFormat
+                } else {
+                    return decimalFormat.format(amount)
+                }
+                locationSpecificDF.format(amount)
+            } catch (e: Exception) {
+                balance
+            }
+        }
+
 
         fun currencyFormatterWithPoint(balance: String?): String? {
             return if (balance != null && !balance.trim { it <= ' ' }

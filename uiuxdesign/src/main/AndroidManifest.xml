@@ -3,8 +3,10 @@
     package="com.mr_mir.uiuxdesign">
 
     <application>
-        <activity android:name="com.mr_mir.uiuxdesign.activity.MainUIActivity"
-            android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.CustomBubbleBottomTabActivity"></activity>
+        <activity
+            android:name=".activity.MainUIActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
