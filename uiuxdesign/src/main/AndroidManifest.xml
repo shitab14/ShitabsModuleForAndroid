@@ -3,7 +3,10 @@
     package="com.mr_mir.uiuxdesign">
 
     <application>
-        <activity android:name=".activity.CustomBubbleBottomTabActivity"></activity>
+        <activity
+            android:name=".activity.RotomPhoneActivity"
+            android:theme="@style/redNotificationBar" />
+        <activity android:name=".activity.CustomBubbleBottomTabActivity" />
         <activity
             android:name=".activity.MainUIActivity"
             android:theme="@style/AppTheme" />

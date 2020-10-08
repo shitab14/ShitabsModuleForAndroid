@@ -22,6 +22,7 @@ import com.mr_mir.shitabsmoduleforandroid.network.NetworkUtil
 import com.mr_mir.shitabsmoduleforandroid.security.SecurityUtil
 import com.mr_mir.uiuxdesign.activity.CustomBubbleBottomTabActivity
 import com.mr_mir.uiuxdesign.activity.MainUIActivity
+import com.mr_mir.uiuxdesign.activity.RotomPhoneActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
             //Navigator.goToUXModule(this)
 
-            ActivityCallUtils.goToNextActivity(context, CustomBubbleBottomTabActivity::class.java)
+            ActivityCallUtils.goToNextActivity(context, RotomPhoneActivity::class.java)
 //ActivityCallUtils.goToNextActivity(context, MainUIActivity::class.java)
         }
     }
